@@ -1,0 +1,36 @@
+Must be implemented in a separate file
+
+📁 File: categorical_encodings.py
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
+from category_encoders import TargetEncoder
+
+One-Hot Encoding
+def one_hot_encode(df, column):
+    return pd.get_dummies(df, columns=[column], drop_first=True)
+
+Label Encoding
+def label_encode(df, column):
+    le = LabelEncoder()
+    df[column] = le.fit_transform(df[column])
+    return df
+
+Ordinal Encoding
+def ordinal_encode(df, column, order):
+    oe = OrdinalEncoder(categories=[order])
+    df[column] = oe.fit_transform(df[[column]])
+    return df
+
+Frequency Encoding
+def frequency_encode(df, column):
+    freq = df[column].value_counts(normalize=True)
+    df[column] = df[column].map(freq)
+    return df
+
+Target Encoding
+def target_encode(df, column, target):
+    te = TargetEncoder()
+    df[column] = te.fit_transform(df[column], df[target])
+    return df
+
+
