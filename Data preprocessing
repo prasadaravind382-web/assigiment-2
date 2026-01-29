@@ -1,0 +1,86 @@
+Handling Missing Values
+
+Common strategies
+
+Numerical features
+
+Mean
+
+Median (robust to outliers ✅)
+
+Categorical features
+
+Mode
+
+“Unknown” category
+
+Advanced
+
+KNN Imputation
+
+Model-based imputation
+
+import pandas as pd
+
+# Numerical
+df['age'].fillna(df['age'].median(), inplace=True)
+
+# Categorical
+df['gender'].fillna(df['gender'].mode()[0], inplace=True)
+
+Fixing Incorrect Data Types or Formats
+
+Common issues
+
+Numbers stored as strings
+
+Dates stored as objects
+
+Categorical columns misclassified as numerical
+
+# Convert to numeric
+df['income'] = pd.to_numeric(df['income'], errors='coerce')
+
+# Convert to datetime
+df['date'] = pd.to_datetime(df['date'], errors='coerce')
+
+# Convert to category
+df['gender'] = df['gender'].astype('category')
+
+Detecting and Treating Outliers
+
+Methods
+
+IQR Method
+
+Z-score Method
+
+IQR Method Example
+
+Q1 = df['salary'].quantile(0.25)
+Q3 = df['salary'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+
+df['salary'] = df['salary'].clip(lower, upper)
+
+Removing Duplicate Records
+df.drop_duplicates(inplace=True)
+
+Identifying & Dropping Irrelevant or Redundant Features
+
+Examples
+
+ID columns
+
+Constant features
+
+Highly correlated features
+
+# Drop ID column
+df.drop(columns=['customer_id'], inplace=True)
+
+# Drop constant columns
+df = df.loc[:, df.nunique() > 1]
