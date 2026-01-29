@@ -1,0 +1,24 @@
+Min-Max Scaling
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+df[['age', 'salary']] = scaler.fit_transform(df[['age', 'salary']])
+
+Max Absolute Scaling
+from sklearn.preprocessing import MaxAbsScaler
+
+scaler = MaxAbsScaler()
+df[['age', 'salary']] = scaler.fit_transform(df[['age', 'salary']])
+
+
+Vector Normalization
+from sklearn.preprocessing import Normalizer
+
+scaler = Normalizer()
+df[['age', 'salary']] = scaler.fit_transform(df[['age', 'salary']])
+
+Z-Score (Standardization)
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+df[['age', 'salary']] = scaler.fit_transform(df[['age', 'salary']])
