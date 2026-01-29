@@ -1,0 +1,33 @@
+Conclusion
+
+Missing Value Handling
+Median imputation performed best for numerical features as it is robust to outliers and preserved the original data distribution better than mean imputation. Mode imputation was effective for categorical variables since it retained the most frequent category without introducing artificial values.
+
+Categorical Encoding Techniques
+
+One-Hot Encoding worked best for nominal features with low cardinality as it avoided imposing false order.
+
+Label Encoding was suitable for binary categorical variables.
+
+Ordinal Encoding performed well when category order was meaningful (e.g., education level).
+
+Frequency Encoding handled high-cardinality features efficiently by preserving distributional information.
+
+Target Encoding improved model performance for high-impact categorical variables but required careful use to avoid data leakage.
+
+Feature Scaling Methods
+Z-score standardization proved most effective for algorithms sensitive to feature magnitude (e.g., logistic regression, SVM), while Min-Max scaling worked well for distance-based models. Vector normalization was beneficial when direction mattered more than magnitude.
+
+Outlier Treatment & Skewness Transformation
+Outlier capping using the IQR method reduced the influence of extreme values without removing data points. Log transformation significantly reduced skewness in heavily right-skewed features, leading to improved model stability and performance.
+
+Final Preprocessing Choices
+The final preprocessing pipeline balanced robustness, interpretability, and model performance by combining median imputation, appropriate categorical encodings, Z-score scaling, and skewness correction.
+
+If you want, I can:
+
+Tailor this exactly to your dataset
+
+Convert this into a ready-to-submit GitHub project
+
+Add evaluation metrics + model comparison
